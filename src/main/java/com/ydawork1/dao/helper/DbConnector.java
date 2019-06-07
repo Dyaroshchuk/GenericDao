@@ -2,6 +2,7 @@ package com.ydawork1.dao.helper;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Optional;
 
 public class DbConnector {
 
@@ -9,14 +10,14 @@ public class DbConnector {
     private static final String name = "dima";
     private static final String password = "6531";
 
-    public static Connection connect() {
+    public static Optional<Connection> connect() {
         try {
             Class.forName("org.h2.Driver");
             Connection connection = DriverManager.getConnection(dbUrl, name, password);
-            return connection;
+            return Optional.of(connection);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return Optional.empty();
     }
 }

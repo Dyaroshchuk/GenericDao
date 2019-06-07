@@ -4,12 +4,9 @@ import com.ydawork1.dao.UserDao;
 import com.ydawork1.dao.UserDaoImpl;
 import com.ydawork1.model.Category;
 import com.ydawork1.model.User;
-
 import java.util.List;
 
-
 public class Main {
-
 
     public static void main(String[] args) {
         UserDao userDao = new UserDaoImpl(User.class);
@@ -33,21 +30,16 @@ public class Main {
         userDao.update(admin);
         categoryDao.update(moto);
 
-        User userFromDB = userDao.get(1L);
-        Category categoryFromDB = categoryDao.get(2L);
+        User userFromDB = userDao.get(1L).get();
+        Category categoryFromDB = categoryDao.get(2L).get();
 
         System.out.println(userFromDB);
         System.out.println(categoryFromDB);
-
 
         userDao.delete(2L);
         categoryDao.delete(1L);
 
         List<User> users = userDao.getAll();
         List<Category> categories = categoryDao.getAll();
-
-
-
-
     }
 }
