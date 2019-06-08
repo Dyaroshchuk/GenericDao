@@ -1,7 +1,10 @@
 package com.ydawork1.model;
 
+import com.ydawork1.di.Table;
+
 import java.util.Objects;
 
+@Table(value = "USER")
 public class User {
 
     private Long id;

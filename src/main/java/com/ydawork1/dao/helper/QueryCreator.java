@@ -1,5 +1,8 @@
 package com.ydawork1.dao.helper;
 
+import com.ydawork1.di.Table;
+
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
@@ -65,8 +68,8 @@ public class QueryCreator<T, ID> {
     }
 
     private String getTableName(T entity) {
-        String tableName = entity.getClass().getSimpleName().toUpperCase();
-        return tableName;
+        Table tableAnnotation = entity.getClass().getAnnotation(Table.class);
+        return tableAnnotation.value();
     }
 
     private String getFieldNamesAndValues(T entity) {
